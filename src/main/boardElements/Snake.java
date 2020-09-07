@@ -26,15 +26,19 @@ public class Snake {
         return positions.contains(position);
     }
 
-    public Vector2d headPosition(){
+    public Vector2d headPosition() {
         return positions.get(0);
     }
 
-    public Vector2d tailPosition(){
+    public Vector2d tailPosition() {
         return positions.get(positions.size() - 1);
     }
 
-    public int getLength(){
+    public int getLength() {
         return positions.size();
+    }
+
+    public List<Vector2d> getPositions() {
+        return positions;
     }
 }

@@ -12,8 +12,8 @@ public class Board {
     private final int size;
     private final Snake snake;
     private Apple apple;
-    Random random = new Random();
-    private MoveDirection lastDirection = MoveDirection.RIGHT;
+    private final Random random = new Random();
+    private MoveDirection moveDirection = MoveDirection.RIGHT;
     private boolean gameFinished = false;
 
     public Board(int size) {
@@ -38,7 +38,7 @@ public class Board {
     void moveAndEatApple() {
         Vector2d position = snake.tailPosition();
 
-        if (!moveSnakeAtPosition(snake.headPosition().add(this.lastDirection.toVector()))) {
+        if (!moveSnakeAtPosition(snake.headPosition().add(this.moveDirection.toVector()))) {
             gameFinished = true;
             return;
         }
@@ -80,8 +80,8 @@ public class Board {
         return apple;
     }
 
-    public void setLastDirection(MoveDirection lastDirection) {
-        this.lastDirection = lastDirection;
+    public void setMoveDirection(MoveDirection moveDirection) {
+        this.moveDirection = moveDirection;
     }
 
     public boolean isGameFinished() {

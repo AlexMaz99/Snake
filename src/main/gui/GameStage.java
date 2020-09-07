@@ -11,11 +11,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import structures.MoveDirection;
-
-import static structures.Vector2d.VECTOR_WIDTH;
 
 public class GameStage extends Application {
     private GameScene gameScene;
@@ -25,8 +22,8 @@ public class GameStage extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
-        stage.setTitle("boardElements");
+    public void start(Stage stage) {
+        stage.setTitle("Snake");
         stage.setOnCloseRequest(actionEvent -> {
             System.exit(0);
         });
@@ -57,10 +54,10 @@ public class GameStage extends Application {
 
             gameScene.setOnKeyPressed(keyEvent -> {
                 switch (keyEvent.getCode()) {
-                    case LEFT -> gameScene.getSimulation().getBoard().setLastDirection(MoveDirection.LEFT);
-                    case RIGHT -> gameScene.getSimulation().getBoard().setLastDirection(MoveDirection.RIGHT);
-                    case DOWN -> gameScene.getSimulation().getBoard().setLastDirection(MoveDirection.DOWN);
-                    case UP -> gameScene.getSimulation().getBoard().setLastDirection(MoveDirection.UP);
+                    case LEFT -> gameScene.getSimulation().getBoard().setMoveDirection(MoveDirection.LEFT);
+                    case RIGHT -> gameScene.getSimulation().getBoard().setMoveDirection(MoveDirection.RIGHT);
+                    case DOWN -> gameScene.getSimulation().getBoard().setMoveDirection(MoveDirection.DOWN);
+                    case UP -> gameScene.getSimulation().getBoard().setMoveDirection(MoveDirection.UP);
                 }
             });
 
@@ -74,9 +71,5 @@ public class GameStage extends Application {
         stage.setScene(scene);
 
         stage.show();
-    }
-
-    private void endGame() {
-
     }
 }

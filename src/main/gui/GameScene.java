@@ -24,8 +24,8 @@ public class GameScene extends Scene {
     private Simulation simulation;
     private final Level level;
     private Timer timer;
-    private Text text;
-    private Text scoreText;
+    private final Text endGameText;
+    private final Text scoreText;
     private int theBestScore = 0;
 
     public GameScene(Group group, String level) {
@@ -36,8 +36,8 @@ public class GameScene extends Scene {
                 Rectangle rectangle = new Rectangle(VECTOR_WIDTH, VECTOR_WIDTH);
                 rectangle.setHeight(VECTOR_WIDTH);
                 rectangle.setWidth(VECTOR_WIDTH);
-                rectangle.setArcHeight(5);
-                rectangle.setArcWidth(5);
+                rectangle.setArcHeight(4);
+                rectangle.setArcWidth(4);
                 rectangle.setFill(Color.GAINSBORO);
                 rectangle.setX(i * VECTOR_WIDTH);
                 rectangle.setY(j * VECTOR_WIDTH);
@@ -61,15 +61,16 @@ public class GameScene extends Scene {
         scoreText.setFont(new Font(12));
         group.getChildren().add(scoreText);
 
-        text = new Text("Game over\n Try again");
-        text.setX(size * VECTOR_WIDTH / 2 - 2 * VECTOR_WIDTH);
-        text.setY(size * VECTOR_WIDTH + 2 * VECTOR_WIDTH);
-        text.setFill(Color.WHITE);
-        text.setFont(new Font(12));
-        text.setOnMouseClicked(mouseEvent -> {
+        endGameText = new Text("Game over\n Try again");
+        endGameText.setX(size * VECTOR_WIDTH / 2 - 2 * VECTOR_WIDTH);
+        endGameText.setY(size * VECTOR_WIDTH + 2 * VECTOR_WIDTH);
+        endGameText.setFill(Color.WHITE);
+        endGameText.setFont(new Font(12));
+        endGameText.setOnMouseClicked(mouseEvent -> {
             newGame();
         });
-        group.getChildren().add(text);
+        endGameText.setStrokeWidth(1);
+        group.getChildren().add(endGameText);
     }
 
     void refreshScene() {
@@ -108,14 +109,18 @@ public class GameScene extends Scene {
 
     void endGame() {
         timer.cancel();
-        if (Integer.parseInt(simulation.getScore()) > theBestScore)
+        if (Integer.parseInt(simulation.getScore()) > theBestScore) {
             theBestScore = Integer.parseInt(simulation.getScore());
-        text.setFill(Color.BLACK);
+            scoreText.setText("Your score: " + this.simulation.getScore() + "\t The best score: " + theBestScore);
+        }
+        endGameText.setFill(Color.BLACK);
+        endGameText.setStroke(Color.BLACK);
     }
 
     void newGame() {
         this.simulation = new Simulation(size);
-        text.setFill(Color.WHITE);
+        endGameText.setFill(Color.WHITE);
+        endGameText.setStroke(Color.WHITE);
         startGame();
     }
 

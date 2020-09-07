@@ -10,8 +10,8 @@ public class Simulation {
     public Board getBoard() {
         return board;
     }
-    
-    public String getScore(){
+
+    public String getScore() {
         return board.getSnake().getLength() + "";
     }
 }

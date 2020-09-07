@@ -1,8 +1,5 @@
 package structures;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 
@@ -73,26 +70,5 @@ public class Vector2d {
         hash += this.x * 31;
         hash += this.y * 17;
         return hash;
-    }
-
-    public static void setVectorWidth(int vectorWidth) throws Exception {
-        if (vectorWidth <= 0)
-            throw new Exception("Vector width must be positive");
-        VECTOR_WIDTH = vectorWidth;
-    }
-
-    public List<Vector2d> neighbours() {
-        List<Vector2d> neighbours = new ArrayList<>();
-
-        neighbours.add(new Vector2d(this.x + VECTOR_WIDTH, this.y + VECTOR_WIDTH));
-        neighbours.add(new Vector2d(this.x + VECTOR_WIDTH, this.y));
-        neighbours.add(new Vector2d(this.x, this.y + VECTOR_WIDTH));
-        neighbours.add(new Vector2d(this.x - VECTOR_WIDTH, this.y + VECTOR_WIDTH));
-        neighbours.add(new Vector2d(this.x + VECTOR_WIDTH, this.y - VECTOR_WIDTH));
-        neighbours.add(new Vector2d(this.x - VECTOR_WIDTH, this.y));
-        neighbours.add(new Vector2d(this.x, this.y - VECTOR_WIDTH));
-        neighbours.add(new Vector2d(this.x - VECTOR_WIDTH, this.y - VECTOR_WIDTH));
-
-        return neighbours;
     }
 }
