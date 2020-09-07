@@ -27,6 +27,6 @@ class LevelTest {
         int easyValue = easy.getValue();
 
         // then
-        assertEquals(easyValue, 500);
+        assertEquals(360, easyValue);
     }
 }

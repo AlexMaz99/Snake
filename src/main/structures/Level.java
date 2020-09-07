@@ -15,8 +15,8 @@ public enum Level {
 
     public int getValue() {
         return switch (this) {
-            case EASY -> 500;
-            case MEDIUM -> 280;
+            case EASY -> 360;
+            case MEDIUM -> 240;
             case DIFFICULT -> 120;
         };
     }

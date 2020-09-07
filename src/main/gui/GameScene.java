@@ -36,8 +36,8 @@ public class GameScene extends Scene {
                 Rectangle rectangle = new Rectangle(VECTOR_WIDTH, VECTOR_WIDTH);
                 rectangle.setHeight(VECTOR_WIDTH);
                 rectangle.setWidth(VECTOR_WIDTH);
-                rectangle.setArcHeight(4);
-                rectangle.setArcWidth(4);
+                rectangle.setArcHeight(1);
+                rectangle.setArcWidth(1);
                 rectangle.setFill(Color.GAINSBORO);
                 rectangle.setX(i * VECTOR_WIDTH);
                 rectangle.setY(j * VECTOR_WIDTH);
