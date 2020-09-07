@@ -57,7 +57,7 @@ public class Board {
         return this.lowerLeft.precedes(position) && this.upperRight.follows(position) && !snake.isAtPosition(position);
     }
 
-    public boolean moveSnakeAtPosition(Vector2d position) {
+    boolean moveSnakeAtPosition(Vector2d position) {
         if (canMove(position)) {
             snake.moveSnake(position);
             return true;
